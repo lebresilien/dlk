@@ -24,7 +24,10 @@ class ServiceResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')->autofocus()->required(),
+                Forms\Components\TextInput::make('name')
+                ->autofocus()
+                ->unique(ignoreRecord: true)
+                ->required(),
                 Forms\Components\Textarea::make('description')
                     ->cols(3)
                     ->rows(3)
@@ -52,7 +55,7 @@ class ServiceResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\ProjectsRelationManager::class,
         ];
     }
 
