@@ -23,7 +23,19 @@ class ProjectResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('title')
+                    ->autofocus()
+                    ->required()
+                    ->unique(ignoreRecord: true),
+                Forms\Components\FileUpload::make('img')
+                    ->label('image de couverture')
+                    ->image()
+                    ->placeholder('Image de couverture')
+                    ->required(),
+                Forms\Components\Textarea::make('description')
+                    ->required(),
+                Forms\Components\BelongsToSelect::make('service_id')
+                    ->relationship('service', 'name')
             ]);
     }
 
@@ -31,7 +43,9 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('service.name'),
             ])
             ->filters([
                 //
@@ -43,14 +57,14 @@ class ProjectResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -58,5 +72,5 @@ class ProjectResource extends Resource
             'create' => Pages\CreateProject::route('/create'),
             'edit' => Pages\EditProject::route('/{record}/edit'),
         ];
-    }    
+    }
 }

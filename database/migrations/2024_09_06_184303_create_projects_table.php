@@ -15,6 +15,7 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('service_id')->contrained();
             $table->string('title')->unique();
             $table->string('img');
             $table->text('description');
