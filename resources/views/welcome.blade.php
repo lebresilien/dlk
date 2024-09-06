@@ -48,10 +48,10 @@
                 </div>
             </div>
             <div class='md:w-1/2 relative hidden md:block'>
-                <img 
+                <img
                     src="{{ asset('img/teams.jpg') }}"
                     alt='teams'
-                   
+
                     class='w-full h-auto rounded-tl-[100px]'
                 />
             </div>
@@ -70,7 +70,7 @@
         </div>
 
         <div class='relative my-5 py-10 md:hidden'>
-            <img 
+            <img
               src="{{ asset('img/teams.jpg') }}"
               alt='teams'
               height="100"
@@ -84,12 +84,12 @@
     @include('layout.partials.service')
 
     <div class='bg-white items-center my-5 px-10 md:my-0 md:py-10 md:px-40 flex flex flex-col'>
-        
+
         <span class='text-2xl md:text-4xl font-bold text-gray-700'>{{ __('our-projects') }}</span>
-    
+
         <div class="grid gap-4 grid-cols-1 md:grid-cols-2 mt-10">
-        
-            <div class="max-w-lg bg-white border border-gray-200 rounded-lg shadow">
+
+            <!-- <div class="max-w-lg bg-white border border-gray-200 rounded-lg shadow">
                 <img class="rounded-lg" width="100%" height=500 src="{{ asset('img/project_1_img.jpg') }}" alt="image description" />
                 <div class="p-5">
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ __('project_1_text') }}</p>
@@ -101,7 +101,7 @@
                 <div class="p-5">
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ __('project_3_text') }}</p>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
