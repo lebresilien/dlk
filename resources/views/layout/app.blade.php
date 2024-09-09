@@ -53,6 +53,7 @@
                 border-radius: 50%
             }
         </style>
+        @yield('css')
     </head>
     <body>
 
@@ -103,7 +104,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
-            new Splide( '#splide_1', {
+            new Splide('#splide_1', {
                 type    : 'loop',
                 autoplay: 'true',
                 pagination : false,
@@ -111,11 +112,20 @@
                 arrows: false
             } ).mount();
 
-            new Splide( '#splide_2', {
+            new Splide('#splide_2', {
                 type    : 'loop',
                 autoplay: 'true',
                 pagination : false,
                 arrows: false
+            } ).mount();
+
+            new Splide('#splide_3', {
+                type    : 'loop',
+                autoplay: 'true',
+                pagination : false,
+                arrows: false,
+                perPage: 3,
+                perMove: 1,
             } ).mount();
 
         });

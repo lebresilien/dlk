@@ -1,5 +1,3 @@
-
-
 <div class='py-20 px-40 hidden sm:block'>
     <div class="splide" id="splide_1">
         <div class="splide__track">

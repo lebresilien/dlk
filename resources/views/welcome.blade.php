@@ -1,5 +1,36 @@
 @extends('layout.app')
 
+@section('css')
+    <style>
+        .card {
+            max-width: 320px;
+            max-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-bottom: 15px;
+            cursor: pointer
+        }
+        .card:hover {
+            border: 1px solid #005494;
+        }
+        .card-img {
+            max-height: 250px
+        }
+        .flexible {
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+        .tag {
+            background-color: rgb(229 231 235);
+            border-radius: 50%;
+            font-weight: bold;
+            color: rgb(55 65 81);
+        }
+    </style>
+@endsection
+
 @section('body')
 
     @include('layout.partials.slide')
@@ -87,23 +118,33 @@
 
         <span class='text-2xl md:text-4xl font-bold text-gray-700'>{{ __('our-projects') }}</span>
 
-        <div class="grid gap-4 grid-cols-1 md:grid-cols-2 mt-10">
+        <section className="bg-gray-500 w-full mt-24">
+            <div className="mx-auto px-4 py-12 sm:px-6 lg:me-0 lg:py-16 lg:pe-0 lg:ps-8 xl:py-24">
+                <div className="flex flex-col md:flex-row md:items-center">
+                    <div className="text-center">
+                        <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
+                           Projects récents
+                        </h2>
+                        <p className="mt-4 text-gray-700">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas veritatis illo placeat
+                            harum porro optio fugit a culpa sunt id!
+                        </p>
+                        <div className="hidden lg:mt-8 lg:flex lg:gap-4">
+                            ghy
+                        </div>
+                    </div>
+                    <div className="ml-5 lg:col-span-2 sm:mx-0 w-2/3">
+                        <div class="splide" id="splide_3">
+                            <div class="splide__track">
+                                <ul class="splide__list space-x-3" id="splide_project">
 
-            <!-- <div class="max-w-lg bg-white border border-gray-200 rounded-lg shadow">
-                <img class="rounded-lg" width="100%" height=500 src="{{ asset('img/project_1_img.jpg') }}" alt="image description" />
-                <div class="p-5">
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ __('project_1_text') }}</p>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="max-w-lg bg-white border border-gray-200 rounded-lg shadow">
-                <img class="rounded-lg" width="100%" height=500 src="{{ asset('img/r_img.png') }}" alt="image description" />
-                <div class="p-5">
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ __('project_3_text') }}</p>
-                </div>
-            </div> -->
-
-        </div>
+        </section>
 
     </div>
 
@@ -114,16 +155,72 @@
         var http = new XMLHttpRequest();
         var url = "api/last_projects";
 
+        const projects = document.querySelector('#splide_project');
+
         http.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-            // Typical action to be performed when the document is ready:
+                // Typical action to be performed when the document is ready:
                document.querySelector('#loader').classList.add('hidden');
                document.querySelector('#root').classList.remove('hidden');
+
                const res =  http.responseText;
-               console.log(JSON.parse(res).projects)
+               const data = JSON.parse(res).projects;
+
+               for(let i = 0; i < data.length; i++) {
+
+                // Create the li element
+                const item = document.createElement('li');
+                item.classList.add('splide__slide');
+
+                // Create the div element
+                const container = document.createElement('div');
+                container.classList.add('card', 'rounded', 'overflow-hidden', 'shadow-lg');
+                item.appendChild(container);
+
+                // Create the img element
+                const img = document.createElement('img');
+                img.classList.add('w-full', 'card-img');
+                img.src = data[i].img;
+                img.alt = data[i].title;
+                container.appendChild(img);
+
+                const contentDiv = document.createElement('div');
+                contentDiv.classList.add('px-6', 'py-4');
+
+                const titleDiv = document.createElement('div');
+                titleDiv.classList.add('font-bold', 'text-xl', 'mb-2');
+                titleDiv.textContent = data[i].title;
+                contentDiv.appendChild(titleDiv);
+
+                // Create the paragraph element
+                const paragraph = document.createElement('p');
+                paragraph.classList.add('text-gray-700', 'text-base', 'overflow-hidden');
+                paragraph.textContent = data[i].description;
+                contentDiv.appendChild(paragraph);
+
+                // Create the tags section div
+                const tagsDiv = document.createElement('div');
+                tagsDiv.classList.add('px-6', 'pt-4', 'pb-2', 'flexible');
+
+                // Create the span tags for each tag
+                const tag = document.createElement('span');
+                tag.classList.add('inline-block', 'bg-gray-200', 'rounded-full', 'px-3', 'py-1', 'text-sm', 'font-semibold', 'text-gray-700', 'mb-2', 'tag');
+                tag.textContent = '#'+data[i].category.name;
+                tagsDiv.appendChild(tag);
+
+                // Append contentDiv to the container
+                container.appendChild(contentDiv);
+
+                // Append the tags section to the container
+                container.appendChild(tagsDiv);
+
+                projects.appendChild(item);
+
+               }
+
             }
         };
-        http.open("GET", url, true);
+        http.open("GET", url, false);
         http.send();
 
     </script>
