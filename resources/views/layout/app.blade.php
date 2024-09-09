@@ -120,12 +120,12 @@
             } ).mount();
 
             new Splide('#splide_3', {
-                type    : 'loop',
-                autoplay: 'true',
-                pagination : false,
-                arrows: false,
+                type   : 'loop',
                 perPage: 3,
                 perMove: 1,
+                arrows: false,
+                autoplay: 'true',
+                pagination : false,
             } ).mount();
 
         });

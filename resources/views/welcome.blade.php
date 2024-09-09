@@ -3,13 +3,13 @@
 @section('css')
     <style>
         .card {
-            max-width: 320px;
-            max-height: 500px;
+            width: 320px;
+            height: 400px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding-bottom: 15px;
-            cursor: pointer
+            cursor: pointer;
+            overflow: hidden
         }
         .card:hover {
             border: 1px solid #005494;
@@ -28,6 +28,9 @@
             font-weight: bold;
             color: rgb(55 65 81);
         }
+        .bg {
+            background-color:  rgb(55 65 81);
+        }
     </style>
 @endsection
 
@@ -40,9 +43,9 @@
         <span class='md:text-4xl text-2xl font-bold text-gray-700 mt-2 md:mt-3 text-center md:text-start leading-10'>{{ __('text-secure') }}</span>
     </div>
 
-    <div class='flex flex-col px-5 md:px-40 md:py-10'>
+    <div class='flex flex-col md:py-10'>
 
-        <div class='flex flex-col md:flex-row'>
+        <div class='flex flex-col px-5 md:px-40 md:flex-row'>
             <div class='md:w-1/2 flex flex-col md:flex-col'>
                 <p class='leading-normal'>
                     {{ __('description') }}
@@ -88,7 +91,7 @@
             </div>
         </div>
 
-        <div class='flex flex-row justify-center md:justify-start mt-10 md:mt-0 md:py-5'>
+        <div class='flex flex-row justify-center px-5 md:px-40 md:justify-start mt-10 md:mt-0 md:py-5'>
             <a href="/about">
                 <button
                     type="button"
@@ -114,26 +117,26 @@
 
     @include('layout.partials.service')
 
-    <div class='bg-white items-center my-5 px-10 md:my-0 md:py-10 md:px-40 flex flex flex-col'>
+    <div class='bg-white items-center my-5 md:my-0 md:py-10 flex flex flex-col'>
 
         <span class='text-2xl md:text-4xl font-bold text-gray-700'>{{ __('our-projects') }}</span>
 
-        <section className="bg-gray-500 w-full mt-24">
-            <div className="mx-auto px-4 py-12 sm:px-6 lg:me-0 lg:py-16 lg:pe-0 lg:ps-8 xl:py-24">
-                <div className="flex flex-col md:flex-row md:items-center">
-                    <div className="text-center">
-                        <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
+        <section class="bg-gray-50 w-full mt-24">
+            <div class="px-4 py-12 sm:px-6 lg:me-0 lg:py-16 lg:pe-0 lg:ps-8 xl:py-24">
+                <div class="grid grid-cols-1 gap-8 lg:grid-cols-4 lg:items-center lg:gap-16">
+                    <div class="max-w-sm bg-green-300 text-center ltr:sm:text-left rtl:sm:text-right">
+                        <h2 class="text-3xl font-bold tracking-tight text-gray-900 uppercase sm:text-4xl">
                            Projects récents
                         </h2>
-                        <p className="mt-4 text-gray-700">
+                        <p class="mt-4 text-gray-700">
                             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas veritatis illo placeat
                             harum porro optio fugit a culpa sunt id!
                         </p>
-                        <div className="hidden lg:mt-8 lg:flex lg:gap-4">
+                        <div class="hidden lg:mt-8 lg:flex lg:gap-4">
                             ghy
                         </div>
                     </div>
-                    <div className="ml-5 lg:col-span-2 sm:mx-0 w-2/3">
+                    <div class="lg:col-span-3 sm:mx-0">
                         <div class="splide" id="splide_3">
                             <div class="splide__track">
                                 <ul class="splide__list space-x-3" id="splide_project">
@@ -204,7 +207,7 @@
 
                 // Create the span tags for each tag
                 const tag = document.createElement('span');
-                tag.classList.add('inline-block', 'bg-gray-200', 'rounded-full', 'px-3', 'py-1', 'text-sm', 'font-semibold', 'text-gray-700', 'mb-2', 'tag');
+                tag.classList.add('inline-block', 'bg-gray-200', 'rounded-full', 'px-3', 'py-1', 'text-sm', 'font-semibold', 'text-gray-700', 'tag');
                 tag.textContent = '#'+data[i].category.name;
                 tagsDiv.appendChild(tag);
 
