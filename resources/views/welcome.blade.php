@@ -108,3 +108,23 @@
     </div>
 
 @endsection
+
+@section('js')
+    <script>
+        var http = new XMLHttpRequest();
+        var url = "api/last_projects";
+
+        http.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            // Typical action to be performed when the document is ready:
+               document.querySelector('#loader').classList.add('hidden');
+               document.querySelector('#root').classList.remove('hidden');
+               const res =  http.responseText;
+               console.log(JSON.parse(res).projects)
+            }
+        };
+        http.open("GET", url, true);
+        http.send();
+
+    </script>
+@endsection

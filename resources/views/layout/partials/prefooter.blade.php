@@ -1,6 +1,6 @@
 <footer class="px-6 bg-[#005494] pt-5 sm:py-24 sm:px-40 text-white">
             <div class="md:flex md:justify-between">
-                <div class="flex flex-col mb-6 md:mb-0 sm:w-1/3">  
+                <div class="flex flex-col mb-6 md:mb-0 sm:w-1/3">
                     <a class="flex items-center">
                         <img src="{{ asset('img/logo.png') }}" width="130" height="50" class="mr-3" alt="logo" />
                     </a>
@@ -24,7 +24,7 @@
                             </li>
                             <li class="">
                                 <div class="flex flex-row justify-start">
-                                    <a href="/" target="_blank">  
+                                    <a href="/" target="_blank">
                                         <i class="text-white text-md mx-1 fa-brands fa-facebook-f"></i>
                                     </a>
                                     <a href="/" target="_blank">
@@ -40,7 +40,7 @@
                             </li>
                         </ul>
                     </div>
-                   
+
                     <div>
                         <h2 class="mb-2 text-sm font-bold text-white uppercase">{{ __('services-us') }}</h2>
                         <span class="flex mb-3 w-5 border-t-4 border-[#11b3e8]"> </span>
@@ -101,11 +101,11 @@
                     <div class="">
                         <h2 class="mb-2 text-sm font-bold text-white uppercase">{{ __('newsletter') }}</h2>
                         <span class="flex mb-3 w-5 border-t-4 border-[#11b3e8]"> </span>
-                        
+
                         <div class='mb-4'>
                             <input type="text" name="name1" class="bg-gray-50 border text-gray-900 text-sm rounded focus:outline-blue-100 block w-full p-2.5" placeholder="{{ __('subject') }}" />
                         </div>
-                        
+
                         <div class='mb-4'>
                             <input type="email" name="email1" class="bg-gray-50 border text-gray-900 text-sm rounded focus:outline-blue-100 block w-full p-2.5 border-blue-100" placeholder="{{ __('email') }}" />
                         </div>
@@ -134,11 +134,11 @@
 </footer>
 
 <script>
-    
+
     const button = document.querySelector("[name='button']")
 
     button.addEventListener('click', function() {
-        
+
         const name = document.querySelector("[name='name1']")
         const email = document.querySelector("[name='email1']")
         const message = document.querySelector("[name='message1']")
@@ -165,15 +165,15 @@
                 if(http.readyState == 4 && http.status == 200) {
 
                     button.innerText = "{{ __('send') }}"
-                    const response =  JSON.parse(http.responseText);
+                    const response = JSON.parse(http.responseText);
                     console.log(response)
-                    
+
                     if(response.message == "success") {
-                        
+
                          name.value = ''
                         email.value = ''
                         message.value = ''
-            
+
                         Toastify({
                             text: "{{ __('success') }}",
                             duration: 5000,
@@ -219,7 +219,7 @@
 
         if(!checkbox.checked) {
            checkbox.style.border = '1px solid red'
-           checkbox.classList.add('error1') 
+           checkbox.classList.add('error1')
         } */
 
     })

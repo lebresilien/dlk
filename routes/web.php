@@ -57,4 +57,4 @@ Route::get('language/{locale}', function ($locale) {
 
  Route::post('mailing', function(Request $request) {
     return $request->all();
-}); 
+});

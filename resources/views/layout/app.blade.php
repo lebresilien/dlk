@@ -20,11 +20,43 @@
                 height: 100vh;
                 margin: 0;
             }
+
+            .pulser {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                position: relative;
+            }
+
+            .pulser::after {
+                animation: pulse 1000ms cubic-bezier(0.9, 0.7, 0.5, 0.9) infinite;
+            }
+
+            @keyframes pulse {
+                0% {
+                    opacity: 0;
+                }
+                50% {
+                    transform: scale(1.4);
+                    opacity: 0.4;
+                }
+            }
+
+            .pulser::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: rgb(0, 84, 148);
+                border-radius: 50%
+            }
         </style>
     </head>
     <body>
 
-        <div class="">
+        <div class="hidden" id="root">
             @include('layout.partials.header')
             @include('layout.partials.menu')
             @yield('body')
@@ -41,6 +73,9 @@
                 </svg>
             </div>
             @include('layout.partials.footer')
+        </div>
+        <div class="flex items-center justify-center min-h-screen bg-red-500" id="loader">
+            <div class="pulser"></div>
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
