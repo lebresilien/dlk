@@ -18,14 +18,7 @@ class DashboardController extends Controller
                     'img' => env('APP_DEBUG') ? 'http://127.0.0.1:8000/storage/'.$item->img :  env('APP_URL').'/storage/'.$item->img,
                     'category' => $item->service
                 ];
-            }),
-            "patners" => Patner::all()->map(function($item) {
-                return [
-                    'id' => $item->id,
-                    'name' => $item->title,
-                    'img' => env('APP_DEBUG') ? 'http://127.0.0.1:8000/storage/'.$item->img :  env('APP_URL').'/storage/'.$item->img,
-                ];
-            }),
+            })
         ];
     }
 
@@ -40,5 +33,15 @@ class DashboardController extends Controller
                     'category' => $item->service
                 ];
             });
+    }
+
+    public function partners() {
+        return Patner::all()->map(function($item) {
+            return [
+                'id' => $item->id,
+                'name' => $item->name,
+                'img' => env('APP_DEBUG') ? 'http://127.0.0.1:8000/storage/'.$item->img :  env('APP_URL').'/storage/'.$item->img,
+            ];
+        });
     }
 }

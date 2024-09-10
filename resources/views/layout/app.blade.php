@@ -102,22 +102,55 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-
             new Splide('#splide_1', {
                 type    : 'loop',
                 autoplay: 'true',
                 pagination : false,
-                perPage : 4,
-                arrows: false
+                perPage : 5,
+                perMove: 1,
+                arrows: false,
+                breakpoints: {
+                    1024: {
+                        perPage: 2,
+                        gap    : '.7rem',
+                    },
+                    640: {
+                        perPage: 1,
+                        gap    : '.7rem',
+                    },
+                },
             } ).mount({ AutoScroll });
-
-            new Splide('#splide_2', {
-                type    : 'loop',
-                autoplay: 'true',
-                pagination : false,
-                arrows: false
-            } ).mount();
         });
+    </script>
+
+    <script>
+        var http = new XMLHttpRequest();
+        var url = "api/partners";
+
+        http.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                const res =  http.responseText;
+                const data = JSON.parse(res);
+
+                for(let i = 0; i < data.length; i++) {
+
+                    // Create the container element
+                    const container = document.createElement('li');
+                    container.classList.add('splide__slide');
+
+                    // Create the img element
+                    const img = document.createElement('img');
+                    img.classList.add('w-auto', 'h-20');
+                    img.src = data[i].img;
+                    img.alt = data[i].name;
+                    container.appendChild(img);
+
+                    document.querySelector('#block').appendChild(container);
+                }
+            }
+        };
+        http.open("GET", url, false);
+        http.send();
     </script>
 
 </html>
