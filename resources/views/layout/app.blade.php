@@ -109,7 +109,7 @@
                 pagination : false,
                 perPage : 4,
                 arrows: false
-            } ).mount();
+            } ).mount({ AutoScroll });
 
             new Splide('#splide_2', {
                 type    : 'loop',

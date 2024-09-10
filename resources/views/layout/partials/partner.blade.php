@@ -1,8 +1,8 @@
-<div class="text-center">
+<div class="text-center bg-gray-50 py-14">
     <span class='text-2xl md:text-4xl font-bold text-gray-700'>{{ __('our-projects') }}</span>
 </div>
 
-<div class='py-20 px-40 hidden sm:block'>
+<div class='py-20 px-40 hidden sm:block bg-white opacity-50'>
     <div class="splide" id="splide_1">
         <div class="splide__track">
             <ul class="splide__list">

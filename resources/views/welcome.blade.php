@@ -105,9 +105,9 @@
 
     @include('layout.partials.service')
 
-    <div class='bg-white items-center my-5 md:my-0 md:py-10 flex flex flex-col'>
+    <div class='items-center my-5 md:my-0 md:py-10 flex flex flex-col'>
 
-        <section class="bg-white w-full mt-24">
+        <section class="w-full mt-24">
             <div class="px-4 py-12 sm:px-6 lg:me-0 lg:py-16 lg:pe-0 lg:ps-8 xl:py-24">
                 <div class="grid grid-cols-1 gap-8 lg:grid-cols-4 lg:items-center lg:gap-16">
                     <div class="max-w-sm z-10 text-center ltr:sm:text-left rtl:sm:text-right">
