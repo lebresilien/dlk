@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     public function last_projects() {
         return [
-            "projects" => Project::all()->map(function($item) {
+            "projects" => Project::latest()->take(10)->get()->map(function($item) {
                 return [
                     'id' => $item->id,
                     'title' => $item->title,
@@ -19,5 +19,18 @@ class DashboardController extends Controller
                 ];
             }),
         ];
+    }
+
+    public function projects() {
+        return
+            Project::all()->map(function($item) {
+                return [
+                    'id' => $item->id,
+                    'title' => $item->title,
+                    'description' => $item->description,
+                    'img' => env('APP_DEBUG') ? 'http://127.0.0.1:8000/storage/'.$item->img :  env('APP_URL').'/storage/'.$item->img,
+                    'category' => $item->service
+                ];
+            });
     }
 }

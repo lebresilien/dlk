@@ -74,7 +74,7 @@
             </div>
             @include('layout.partials.footer')
         </div>
-        <div class="flex items-center justify-center min-h-screen bg-red-500" id="loader">
+        <div class="flex items-center justify-center min-h-screen" id="loader">
             <div class="pulser"></div>
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
@@ -117,54 +117,7 @@
                 pagination : false,
                 arrows: false
             } ).mount();
-
-            const splide3 = new Splide('#splide_3', {
-                type   : 'loop',
-                perPage: 3,
-                perMove: 1,
-                arrows: false,
-                autoplay: 'true',
-                pagination : false,
-                breakpoints: {
-                    1024: {
-                        perPage: 2,
-                        gap    : '.7rem',
-                    },
-                    640: {
-                        perPage: 1,
-                        gap    : '.7rem',
-                    },
-                },
-            } )
-
-            document.querySelector('.splide3_next').addEventListener('click', e => {
-                splide3.go('+1')
-            })
-
-            document.querySelector('.splide3_prev').addEventListener('click', e => {
-                splide3.go('-1')
-            })
-
-            document.querySelector('.splide_next_mobile').addEventListener('click', e => {
-                splide3.go('+1')
-            })
-
-            document.querySelector('.splide_prev_mobile').addEventListener('click', e => {
-                splide3.go('-1')
-            })
-
-            splide3.mount();
-
         });
     </script>
-
-<!--     <script>
-	    var botmanWidget = {
-	        aboutText: 'ssdsd',
-	        introMessage: "✋ Hi! I'm form ItSolutionStuff.com"
-	    };
-    </script>
-
-    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script> -->
 
 </html>

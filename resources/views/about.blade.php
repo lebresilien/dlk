@@ -2,12 +2,12 @@
 
 @section('body')
 
-    @include('layout.partials.banner', ['type' => 'other', 'title' =>  __('about') ]) 
-    
+    @include('layout.partials.banner', ['type' => 'other', 'title' =>  __('about') ])
+
     <div class="flex flex-col md:flex-row px-5 my-8 md:px-40 md:my-16">
-        
+
         <div class="flex flex-col md:w-2/3">
-                    
+
             <div class="flex flex-col md:my-14">
                 <span class="text-[#11b3e8] text-3xl md:text-3xl font-semibold">{{ __('text_about') }}</span>
                 <span class="text-md leading-6 block my-5">
@@ -52,6 +52,12 @@
     <span class="block my-5 text-[#11b3e8] text-lg md:text-xl text-center font-semibold">{{ __('philosophy') }}</span>
         @include('layout.partials.timeline')
     </div>
-    
 
+
+@endsection
+
+@section('js')
+    <script>
+        document.querySelector('#root').classList.remove('hidden');
+    </script>
 @endsection
