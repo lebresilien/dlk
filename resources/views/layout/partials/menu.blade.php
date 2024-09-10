@@ -63,7 +63,7 @@
                                 <span className='text-gray-900'>{{$available_locale['name']}}</span>
                             </div>
                         @endif
-                    @endforeach 
+                    @endforeach
                 </div>
                 <i class="block fa-solid fa-chevron-down"></i>
             </button>
@@ -89,7 +89,7 @@
                         </div>
                     </a>
                 @endif
-            @endforeach 
+            @endforeach
           </div>
         </div>
         <a class="block ml-3" href="{{ asset('files/services.pptx') }}">
@@ -124,7 +124,7 @@
 <script>
    const menu = document.getElementById('menu-lang')
    menu.style.display = 'none'
-   
+
    const btn = document.querySelector('#dropdown')
     btn.addEventListener('click', function() {
         menu.style.display = 'block'
@@ -135,6 +135,6 @@
         if(menu.style.visibility == 'visible') {
             alert('d')
             menu.style.display = 'none'
-        } 
+        }
     }) */
 </script>

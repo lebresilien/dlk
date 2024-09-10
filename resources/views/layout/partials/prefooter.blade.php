@@ -1,9 +1,10 @@
 <footer class="px-6 bg-[#005494] pt-5 sm:py-24 sm:px-40 text-white">
             <div class="md:flex md:justify-between">
-                <div class="flex flex-col mb-6 md:mb-0 sm:w-1/3">
+                <div class="flex flex-col mb-6 md:mb-0 space-y-3 sm:w-1/3">
                     <a class="flex items-center">
                         <img src="{{ asset('img/logo.png') }}" width="130" height="50" class="mr-3" alt="logo" />
                     </a>
+                    <span class="text-white text-sm">We make your business easier</span>
                 </div>
                 <div class="grid grid-cols-1 gap-8 sm:gap-6 sm:grid-cols-3 sm:w-2/3">
                     <div>

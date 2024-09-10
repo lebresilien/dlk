@@ -11196,6 +11196,11 @@ video {
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
 }
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
 .overflow-hidden {
   overflow: hidden;
 }
@@ -11916,6 +11921,11 @@ video {
   .group:hover .group-hover\:text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+  .group:hover .group-hover\:text-\[\#11b3e8\] {
+  --tw-text-opacity: 1;
+  color: rgb(17 179 232 / var(--tw-text-opacity));
 }
 
   @media (prefers-color-scheme: dark) {
