@@ -119,14 +119,42 @@
                 arrows: false
             } ).mount();
 
-            new Splide('#splide_3', {
+            const splide3 = new Splide('#splide_3', {
                 type   : 'loop',
                 perPage: 3,
                 perMove: 1,
                 arrows: false,
                 autoplay: 'true',
                 pagination : false,
-            } ).mount();
+                breakpoints: {
+                    1024: {
+                        perPage: 2,
+                        gap    : '.7rem',
+                    },
+                    640: {
+                        perPage: 1,
+                        gap    : '.7rem',
+                    },
+                },
+            } )
+
+            document.querySelector('.splide3_next').addEventListener('click', e => {
+                splide3.go('+1')
+            })
+
+            document.querySelector('.splide3_prev').addEventListener('click', e => {
+                splide3.go('-1')
+            })
+
+            document.querySelector('.splide_next_mobile').addEventListener('click', e => {
+                splide3.go('+1')
+            })
+
+            document.querySelector('.splide_prev_mobile').addEventListener('click', e => {
+                splide3.go('-1')
+            })
+
+            splide3.mount();
 
         });
     </script>

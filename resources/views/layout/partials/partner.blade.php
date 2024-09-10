@@ -1,3 +1,7 @@
+<div class="text-center">
+    <span class='text-2xl md:text-4xl font-bold text-gray-700'>{{ __('our-projects') }}</span>
+</div>
+
 <div class='py-20 px-40 hidden sm:block'>
     <div class="splide" id="splide_1">
         <div class="splide__track">

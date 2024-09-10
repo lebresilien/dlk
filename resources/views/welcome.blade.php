@@ -2,20 +2,11 @@
 
 @section('css')
     <style>
-        .card {
-            width: 320px;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            cursor: pointer;
-            overflow: hidden
-        }
-        .card:hover {
+        /* .card:hover {
             border: 1px solid #005494;
-        }
+        } */
         .card-img {
-            max-height: 250px
+            height: 200px
         }
         .flexible {
             display: flex;
@@ -119,12 +110,10 @@
 
     <div class='bg-white items-center my-5 md:my-0 md:py-10 flex flex flex-col'>
 
-        <span class='text-2xl md:text-4xl font-bold text-gray-700'>{{ __('our-projects') }}</span>
-
-        <section class="bg-gray-50 w-full mt-24">
+        <section class="bg-white w-full mt-24">
             <div class="px-4 py-12 sm:px-6 lg:me-0 lg:py-16 lg:pe-0 lg:ps-8 xl:py-24">
                 <div class="grid grid-cols-1 gap-8 lg:grid-cols-4 lg:items-center lg:gap-16">
-                    <div class="max-w-sm bg-green-300 text-center ltr:sm:text-left rtl:sm:text-right">
+                    <div class="max-w-sm z-10 text-center ltr:sm:text-left rtl:sm:text-right">
                         <h2 class="text-3xl font-bold tracking-tight text-gray-900 uppercase sm:text-4xl">
                            Projects récents
                         </h2>
@@ -132,18 +121,23 @@
                             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas veritatis illo placeat
                             harum porro optio fugit a culpa sunt id!
                         </p>
-                        <div class="hidden lg:mt-8 lg:flex lg:gap-4">
-                            ghy
+                        <div class="hidden lg:mt-8 lg:flex lg:gap-4 lg:items-center lg:justify-center">
+                            <div class="splide3_prev flex items-center justify-center w-10 h-10 rounded-full bg-[#005494] cursor-pointer px-5 text-white hover:bg-[#11b3e8]"><</div>
+                            <div class="splide3_next flex items-center justify-center w-10 h-10 rounded-full bg-[#005494] cursor-pointer px-5 text-white hover:bg-[#11b3e8]">></div>
                         </div>
                     </div>
-                    <div class="lg:col-span-3 sm:mx-0">
+                    <div class="bg-gray-50 py-10 pl-14 sm:mx-0 lg:pl-0 lg:col-span-3 lg:py-20">
                         <div class="splide" id="splide_3">
                             <div class="splide__track">
-                                <ul class="splide__list space-x-3" id="splide_project">
+                                <ul class="splide__list" id="splide_project">
 
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                    <div class="mt-8 flex justify-center gap-4 lg:hidden">
+                        <div class="splide_prev_mobile flex items-center justify-center w-10 h-10 rounded-full bg-[#005494] cursor-pointer px-5 text-white hover:bg-[#11b3e8]"><</div>
+                        <div class="splide_next_mobile flex items-center justify-center w-10 h-10 rounded-full bg-[#005494] cursor-pointer px-5 text-white hover:bg-[#11b3e8]">></div>
                     </div>
                 </div>
             </div>
@@ -177,7 +171,7 @@
 
                 // Create the div element
                 const container = document.createElement('div');
-                container.classList.add('card', 'rounded', 'overflow-hidden', 'shadow-lg');
+                container.classList.add('flex', 'flex-col', 'cursor-pointer', 'w-[320px]', 'h-[400px]', 'justify-between', 'rounded', 'overflow-hidden', 'shadow-lg', 'bg-white', 'border','hover:border-[#005494]');
                 item.appendChild(container);
 
                 // Create the img element
