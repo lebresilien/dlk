@@ -11,9 +11,15 @@ class Project extends Model
 
     protected $fillable = [
         'title',
+        'slug',
         'img',
         'service_id',
-        'description'
+        'description',
+        'attachments'
+    ];
+
+    protected $casts = [
+        'attachments' => 'array',
     ];
 
     public function service() {
