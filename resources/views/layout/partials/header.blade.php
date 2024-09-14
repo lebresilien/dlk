@@ -12,14 +12,14 @@
     </div>
 
     <div class="flex justify-center md:justify-end">
-        <a href="/" target="_blank">
+        <a href="https://www.facebook.com/dlkservicessl" target="_blank">
             <i class="text-white text-md mx-1 fa-brands fa-facebook-f"></i>
         </a>
-        <a href="/" target="_blank">
-            <i class="text-white text-md mx-1 fa-brands fa-twitter"></i>
+        <a href="https://www.instagram.com/dlkservices" target="_blank">
+            <i class="text-white text-md mx-1 fa-brands fa-instagram"></i>
         </a>
         <a href="/" target="_blank">
-            <i class="text-white text-md mx-1 fa-brands fa-pinterest-p"></i>
+            <i class="text-white text-md mx-1 fa-brands fa-tiktok"></i>
         </a>
         <a href="/" target="_blank">
             <i class="text-white text-md mx-1 fa-brands fa-twitter"></i>

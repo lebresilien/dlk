@@ -63,7 +63,7 @@
             @include('layout.partials.partner')
             @include('layout.partials.prefooter')
             <div class="flex fixed bottom-20 right-3">
-                <a href="https://api.whatsapp.com/send?phone=240222331926" target="_blanck">
+                <a href="https://api.whatsapp.com/send?phone=240555610792" target="_blanck">
                     <img src="{{ asset('img/whatsapp.svg') }}" height="60" width="60" class="hover:-translate-y-2 duration-300" alt="whasapp dlk services sl">
                 </a>
             </div>

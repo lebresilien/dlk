@@ -12,6 +12,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class ProjectResource extends Resource
 {
@@ -26,16 +27,10 @@ class ProjectResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->autofocus()
                     ->required()
-                    ->live(onBlur: true)
-                    ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set, ?string $old, ?string $state) {
-                        if (($get('slug') ?? '') !== Str::slug($old)) {
-                            return;
-                        }
-                        $set('slug', Str::slug($state));
-                    })
                     ->unique(ignoreRecord: true),
                 Forms\Components\TextInput::make('slug')
-                    ->required(),
+                    ->label('Slug')
+                    ->disabled(), // Optional: disable manual editing
                 Forms\Components\FileUpload::make('img')
                     ->label('image de couverture')
                     ->image()
@@ -45,7 +40,7 @@ class ProjectResource extends Resource
                     ->required(),
                 Forms\Components\BelongsToSelect::make('service_id')
                     ->relationship('service', 'name'),
-                Forms\Components\FileUpload::make('img')
+                Forms\Components\FileUpload::make('attachments')
                     ->label('Image du projet')
                     ->image()
                     ->multiple()
