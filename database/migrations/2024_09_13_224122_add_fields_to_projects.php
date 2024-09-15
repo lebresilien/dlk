@@ -15,7 +15,7 @@ class AddFieldsToProjects extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
             $table->string('slug')->unique();
-            $table->string('attachments');
+            $table->longText('attachments');
         });
     }
 

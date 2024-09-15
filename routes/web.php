@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,8 @@ Route::get('language/{locale}', function ($locale) {
     return redirect()->back();
 })->name('language');
 
- Route::post('mailing', function(Request $request) {
+Route::post('mailing', function(Request $request) {
     return $request->all();
 });
+
+Route::get('projects/{slug}', [DashboardController::class, 'project']);

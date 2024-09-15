@@ -207,8 +207,9 @@
                 item.classList.add('splide__slide');
 
                 // Create the div element
-                const container = document.createElement('div');
-                container.classList.add('flex', 'flex-col', 'cursor-pointer', 'w-[320px]', 'h-[400px]', 'justify-between', 'rounded', 'overflow-hidden', 'shadow-lg', 'bg-white', 'border','hover:border-[#005494]');
+                const container = document.createElement('a');
+                container.href = 'projects/' + data[i].slug;
+                container.classList.add('flex', 'flex-col', 'cursor-pointer', 'w-[320px]', 'h-[400px]', 'justify-between', 'rounded', 'overflow-hidden', 'shadow-lg', 'bg-white', 'border', 'hover:border-[#005494]');
                 item.appendChild(container);
 
                 // Create the img element

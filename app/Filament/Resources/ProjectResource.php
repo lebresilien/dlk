@@ -28,9 +28,6 @@ class ProjectResource extends Resource
                     ->autofocus()
                     ->required()
                     ->unique(ignoreRecord: true),
-                Forms\Components\TextInput::make('slug')
-                    ->label('Slug')
-                    ->disabled(), // Optional: disable manual editing
                 Forms\Components\FileUpload::make('img')
                     ->label('image de couverture')
                     ->image()
