@@ -19,6 +19,12 @@
         .bg {
             background-color:  rgb(55 65 81);
         }
+        .line-clamp-6 {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 6;
+        }
     </style>
 @endsection
 
@@ -209,7 +215,7 @@
                 // Create the div element
                 const container = document.createElement('a');
                 container.href = 'projects/' + data[i].slug;
-                container.classList.add('flex', 'flex-col', 'cursor-pointer', 'w-[320px]', 'h-[400px]', 'justify-between', 'rounded', 'overflow-hidden', 'shadow-lg', 'bg-white', 'border', 'hover:border-[#005494]');
+                container.classList.add('flex', 'flex-col', 'w-[320px]', 'justify-between', 'rounded', 'overflow-hidden', 'shadow-lg', 'bg-white', 'border', 'hover:border-[#005494]');
                 item.appendChild(container);
 
                 // Create the img element
@@ -223,13 +229,13 @@
                 contentDiv.classList.add('px-6', 'py-4');
 
                 const titleDiv = document.createElement('div');
-                titleDiv.classList.add('font-bold', 'text-xl', 'mb-2');
+                titleDiv.classList.add('font-bold', 'text-xl', 'mb-2', 'text-black');
                 titleDiv.textContent = data[i].title;
                 contentDiv.appendChild(titleDiv);
 
                 // Create the paragraph element
                 const paragraph = document.createElement('p');
-                paragraph.classList.add('text-gray-700', 'text-base', 'overflow-hidden');
+                paragraph.classList.add('text-gray-700', 'text-base', 'line-clamp-6');
                 paragraph.textContent = data[i].description;
                 contentDiv.appendChild(paragraph);
 

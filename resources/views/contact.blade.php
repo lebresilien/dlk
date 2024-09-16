@@ -2,7 +2,7 @@
 
 @section('body')
 
-    @include('layout.partials.banner', ['type' => 'contact', 'title' =>  __('contact') ]) 
+    @include('layout.partials.banner', ['type' => 'contact', 'title' =>  __('contact') ])
 
     <div class="py-5 px-20 bg-[#11b3e8]">
         <div class="flex flex-row justify-end items-center">
@@ -62,7 +62,7 @@
                     <input type="text" name="name" class="bg-gray-50 border border-gray-50 text-gray-900 text-sm rounded focus:outline-blue-100 block w-full p-2.5" placeholder="{{ __('nom') }}" />
                     @error('name') <span class="text-red-500">{{ $message }}</span>@enderror
                 </div>
-            
+
                 <div class='mb-4'>
                     <input type="email" name="email" class="bg-gray-50 border border-gray-50 text-gray-900 text-sm rounded focus:outline-blue-100 block w-full p-2.5" placeholder="{{ __('email') }}" />
                     @error('email') <span class="text-red-500">{{ $message }}</span>@enderror
@@ -93,12 +93,12 @@
         </div>
 
         <div class="w-1/2 justify-center items-center" id="map">
-          
+
     </div>
 
     </div>
-    
-    
+
+
 @endsection
 
 @section('js')
@@ -109,6 +109,9 @@
 ></script>
 <script>
     window.onload = function () {
+
+        document.querySelector('#loader').classList.add('hidden');
+        document.querySelector('#root').classList.remove('hidden');
 
         const uluru = { lat: parseFloat(document.querySelector('#lat').value), lng: parseFloat(document.querySelector('#lng').value) };
         // The map, centered at Uluru
@@ -124,7 +127,7 @@
         });
 
         const country = document.querySelector('.county')
-        
+
         country.addEventListener('change', function() {
             if(this.value === "td") {
                 document.querySelector('#location').innerHTML = "{{ __('location2') }}"

@@ -104,7 +104,6 @@
         document.addEventListener('DOMContentLoaded', function () {
             new Splide('#splide_1', {
                 type    : 'loop',
-                autoplay: 'true',
                 pagination : false,
                 perPage : 5,
                 perMove: 1,
@@ -125,7 +124,7 @@
 
     <script>
         var http = new XMLHttpRequest();
-        var url = "api/partners";
+        var url = "{{ url('api/partners') }}";
 
         http.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {

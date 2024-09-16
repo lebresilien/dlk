@@ -60,4 +60,4 @@ Route::post('mailing', function(Request $request) {
     return $request->all();
 });
 
-Route::get('projects/{slug}', [DashboardController::class, 'project']);
+Route::get('projects/{slug}', [DashboardController::class, 'project'])->name('projects.show');

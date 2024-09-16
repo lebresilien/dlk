@@ -18,53 +18,35 @@
         .bg {
             background-color:  rgb(55 65 81);
         }
+        .line-clamp-10 {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 10;
+        }
     </style>
 @endsection
 @section('body')
 
     @include('layout.partials.banner', ['type' => 'other', 'title' =>  __('projects') ])
 
-    <div class="flex flex-col px-10 mt-16 md:px-40 md:mt-16 items-center">
+    <div class="flex bg-gray-50 flex-col items-center justify-center my-10 lg:my-16">
 
-      <!--   <span class='text-2xl md:text-4xl font-bold text-gray-700'>{{ __('our-projects') }}</span> -->
-
-        <div class="grid gap-4 grid-cols-1 md: gap-8 md:grid-cols-2 md:py-20 lg:grid-cols-3" id="container">
-
-            <!-- <div class="max-w-lg bg-white border border-gray-200 rounded-lg shadow mb-30 md:mb-0">
-                <img class="rounded-lg md:hidden" src="{{ asset('img/project_1_img.jpg') }}" alt="image description" />
-                <img class="rounded-lg hidden md:block" width="100%" height=500 src="{{ asset('img/project_1_img.jpg') }}" alt="image description" />
-                <div class="p-5">
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ __('project_1_text') }}</p>
-                </div>
-                <div class="flex justify-center w-full mb-3">
-                    <button
-                        id="modal-2"
-                        type="button"
-                        class="px-5 py-3 btn bg-[#005494] hover:bg-[#11b3e8]"
-                    >
-                        <span class="w-full text-white text-center">{{ __('read_video') }}</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="max-w-lg bg-white border border-gray-200 rounded-lg shadow">
-                <img class="rounded-lg md:hidden" width=300 height=300 src="{{ asset('img/r_img.png') }}" alt="image description" />
-                <img class="rounded-lg hidden md:block" width="100%" height=500 src="{{ asset('img/r_img.png') }}" alt="image description" />
-                <div class="p-5">
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ __('project_1_text') }}</p>
-                </div>
-                <div class="flex justify-center w-full mb-3">
-                    <button
-                        id="modal-1"
-                        type="button"
-                        class="px-5 py-3 btn bg-[#005494] hover:bg-[#11b3e8]"
-                    >
-                        <span class="w-full text-white text-center">{{ __('read_video') }}</span>
-                    </button>
-                </div>
-            </div> -->
+        <div class="grid grid-cols-1 gap-4 py-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-6 lg:py-20" id="content">
 
         </div>
+
+        <!-- <div class="flex w-full flex-col items-center bg-white justify-center py-24 space-y-10">
+            <span class="text-xl text-black font-bold uppercase lg:text-3xl">Prêt à vous lancez ?</span>
+            <a class="mt-8" href="/contact">
+                <Button class="inline-flex relative gap-x-2 h-16 px-4 border-0 bg-blue-500 overflow-hidden transition-all hover:bg-blue-500 group focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm lg:h-20">
+                    <span class="w-0 h-0 rounded bg-blue-600 absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
+                    <span class="text-white sm:text-sm transition-colors duration-300 ease-in-out group-hover:text-white z-10">Demandez une consultation</span>
+                    <Icon name="arrow-right" class="animate-ping h-3 w-3 text-white" />
+                </Button>
+            </a>
+        </div> -->
+
     </div>
 
 
@@ -133,9 +115,10 @@
     <script>
 
         var http = new XMLHttpRequest();
-        var url = "api/projects";
+        var url = "{{ url('api/projects') }}";
 
         http.onreadystatechange = function() {
+
             if (this.readyState == 4 && this.status == 200) {
 
                 document.querySelector('#loader').classList.add('hidden');
@@ -146,8 +129,9 @@
                 for(let i = 0; i < data.length; i++) {
 
                     // Create the container element
-                    const container = document.createElement('div');
-                    container.classList.add('flex', 'flex-col', 'cursor-pointer', 'w-[320px]', 'h-[400px]', 'justify-between', 'rounded', 'overflow-hidden', 'shadow-lg', 'bg-white', 'border','hover:border-[#005494]');
+                    const container = document.createElement('a');
+                    container.href = 'projects/' + data[i].slug;
+                    container.classList.add('flex', 'flex-col', 'w-[320px]', 'rounded', 'justify-between', 'overflow-hidden', 'shadow-lg', 'bg-white', 'border','hover:border-[#005494]');
 
                     // Create the img element
                     const img = document.createElement('img');
@@ -157,16 +141,16 @@
                     container.appendChild(img);
 
                     const contentDiv = document.createElement('div');
-                    contentDiv.classList.add('px-6', 'py-4');
+                    contentDiv.classList.add('px-6', 'py-4', 'text-balance');
 
                     const titleDiv = document.createElement('div');
-                    titleDiv.classList.add('font-bold', 'text-xl', 'mb-2');
+                    titleDiv.classList.add('font-bold', 'text-xl', 'mb-2', 'text-black');
                     titleDiv.textContent = data[i].title;
                     contentDiv.appendChild(titleDiv);
 
                     // Create the paragraph element
                     const paragraph = document.createElement('p');
-                    paragraph.classList.add('text-gray-700', 'text-base', 'overflow-hidden');
+                    paragraph.classList.add('text-gray-800', 'text-base', 'line-clamp-10');
                     paragraph.textContent = data[i].description;
                     contentDiv.appendChild(paragraph);
 
@@ -186,7 +170,7 @@
                     // Append the tags section to the container
                     container.appendChild(tagsDiv);
 
-                    document.querySelector('#container').appendChild(container);
+                    document.querySelector('#content').appendChild(container);
                 }
 
             }

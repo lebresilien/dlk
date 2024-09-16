@@ -20,6 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('last_projects', [DashboardController::class, 'last_projects']);
-Route::get('projects', [DashboardController::class, 'projects']);
+Route::get('projects', [DashboardController::class, 'projects'])->name('projects');
 Route::get('partners', [DashboardController::class, 'partners']);
-Route::get('projects/{slug}', [DashboardController::class, 'project']);
+Route::get('projects/{slug}', [DashboardController::class, 'project'])->name('projects.show');
