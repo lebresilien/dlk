@@ -130,7 +130,9 @@
 
                     // Create the container element
                     const container = document.createElement('a');
-                    container.href = 'projects/' + data[i].slug;
+                    var url = "{{ route('projects.show', ':slug') }}";
+                    url = url.replace(':slug', data[i].slug);
+                    container.href = url;
                     container.classList.add('flex', 'flex-col', 'w-[320px]', 'rounded', 'justify-between', 'overflow-hidden', 'shadow-lg', 'bg-white', 'border','hover:border-[#005494]');
 
                     // Create the img element

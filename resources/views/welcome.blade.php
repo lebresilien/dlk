@@ -214,7 +214,9 @@
 
                 // Create the div element
                 const container = document.createElement('a');
-                container.href = 'projects/' + data[i].slug;
+                var url = "{{ route('projects.show', ':slug') }}";
+                url = url.replace(':slug', data[i].slug);
+                container.href = url;
                 container.classList.add('flex', 'flex-col', 'w-[320px]', 'justify-between', 'rounded', 'overflow-hidden', 'shadow-lg', 'bg-white', 'border', 'hover:border-[#005494]');
                 item.appendChild(container);
 
