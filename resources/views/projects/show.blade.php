@@ -5,28 +5,17 @@
 
     <div class="flex bg-gray-50 w-full h-full flex-col items-center justify-center">
 
-        <div class="container flex flex-col space-x-3 items-center justify-center my-16 lg:space-x-3 lg:my-24 lg:flex-row">
+        <div class="container px-5 flex flex-col lg:space-x-3 justify-center my-16 lg:px-0 lg:space-x-3 lg:my-24 lg:flex-row">
 
             <div class="flex flex-col lg:w-2/3 " id="details">
 
             </div>
 
-            <div class="flex flex-col space-y-8 border border-[#11b3e8] px-4 py-4 lg:w-1/3 lg:space-y-10">
-                <div class="border-l-[#005494] border-l-4 text-black px-3">Projets Récents</div>
+            <div class="flex flex-col w-full space-y-8 p-5 border border-[#11b3e8] max-h-96 lg:px-5 lg:px-0 lg:w-1/3 lg:space-y-10">
+                <div class="border-l-[#005494] border-l-4 text-black px-3">{{ __('last-projects') }}</div>
                 <div class="flex flex-col space-y-4 uppercase text-md md:text-xl" id="last_projects"></div>
             </div>
         </div>
-
-       <!--  <div class="flex w-full flex-col items-center bg-white justify-center py-24 space-y-10">
-            <span class="text-xl text-black font-bold uppercase lg:text-3xl">Prêt à vous lancez ?</span>
-            <a class="mt-8" href="/contact">
-                <button class="inline-flex relative gap-x-2 h-16 px-4 border-0 bg-blue-500 overflow-hidden transition-all hover:bg-blue-500 group focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm lg:h-20">
-                    <span class="w-0 h-0 rounded bg-blue-600 absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
-                    <span class="text-white sm:text-sm transition-colors duration-300 ease-in-out group-hover:text-white z-10">Demandez une consultation</span>
-                    <Icon name="arrow-right" class="animate-ping h-3 w-3 text-white" />
-                </button>
-            </a>
-        </div> -->
 
     </div>
 
@@ -48,7 +37,6 @@
                 const res =  http.responseText;
                 const data = JSON.parse(res);
                 const projects = data.projects;
-                //console.log(data.projects);
 
                 // Create the container element details
                 const container_1 = document.createElement('div');
@@ -63,7 +51,7 @@
 
                 // Create title
                 const title_1 = document.createElement('h3');
-                title_1.classList.add('text-bold', 'text-black', 'my-5', 'text-xl', 'uppercase');
+                title_1.classList.add('text-black', 'my-5', 'font-bold', 'uppercase', 'text-lg', 'lg:text-2xl');
                 title_1.textContent = data.data.title;
                 container_1.appendChild(title_1);
 
@@ -81,9 +69,9 @@
                 const attachments = data.data.attachments;
                 for(let i = 0; i < attachments.length; i++) {
                     const photo = document.createElement('img');
-                    photo.classList.add('w-24', 'h-24');
+                    photo.classList.add('w-48', 'h-48');
                     photo.src = attachments[i];
-                    photo.alt = 'alt';
+                    photo.alt = data.data.title;
                     pictures.appendChild(photo);
                 }
 
@@ -95,14 +83,14 @@
 
                     // Create the container element
                     const container = document.createElement('a');
-                    container.classList.add('flex', 'flex-col', 'items-center', 'border', 'border-gray-200', 'rounded-lg', 'shadow', 'md:flex-row', 'md:max-w-sm', 'hover:bg-gray-100');
+                    container.classList.add('flex', 'items-center', 'border', 'border-gray-200', 'rounded-lg', 'shadow', 'flex-row', 'md:max-w-sm', 'hover:bg-gray-100');
                     var url = "{{ route('projects.show', ':slug') }}";
                     url = url.replace(':slug', projects[i].slug);
                     container.href = url;
 
                     // Create the img element
                     const img = document.createElement('img');
-                    img.classList.add('object-cover', 'w-full', 'grayscale', 'rounded-full', 'h-16', 'md:h-auto', 'md:w-32', 'md:rounded-none', 'md:rounded-s-lg');
+                    img.classList.add('object-cover', 'w-24', 'grayscale', 'h-16', 'md:h-auto', 'md:w-32', 'md:rounded-none', 'md:rounded-s-lg');
                     img.src = projects[i].img;
                     img.alt = projects[i].title;
                     container.appendChild(img);
@@ -114,12 +102,6 @@
                     titleDiv.classList.add('text-sm', 'font-bold', 'tracking-tight', 'text-gray-900');
                     titleDiv.textContent = projects[i].title;
                     contentDiv.appendChild(titleDiv);
-
-                    // Create the paragraph element
-                   /*  const paragraph = document.createElement('p');
-                    paragraph.classList.add('text-gray-700', 'text-base', 'font-normal');
-                    paragraph.textContent = projects[i].description;
-                    contentDiv.appendChild(paragraph); */
 
                     // Append contentDiv to the container
                     container.appendChild(contentDiv);
