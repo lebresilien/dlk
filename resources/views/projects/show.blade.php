@@ -37,7 +37,7 @@
     <script>
 
         var http = new XMLHttpRequest();
-        var url = "../api/projects/test";
+        var url = "../api/projects/"+window.location.href.split('/')[4];
 
         http.onreadystatechange = function() {
 
@@ -60,6 +60,12 @@
                 img_1.src = data.data.img;
                 img_1.alt = data.data.title;
                 container_1.appendChild(img_1);
+
+                // Create title
+                const title_1 = document.createElement('h3');
+                title_1.classList.add('text-bold', 'text-black', 'my-5', 'text-xl', 'uppercase');
+                title_1.textContent = data.data.title;
+                container_1.appendChild(title_1);
 
                 // Create the paragraph element
                 const paragraph_1 = document.createElement('p');
