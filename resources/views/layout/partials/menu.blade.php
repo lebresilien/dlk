@@ -59,7 +59,7 @@
                     @foreach($available_locales as $available_locale)
                         @if($available_locale['name'] === $current_locale)
                             <div class="flex flex-row justify-between space-x-1">
-                                <img width="25" height="25" src="{{ asset($available_locale['img']) }}" alt="francais">
+                                <img width="25" height="25" src="{{ asset($available_locale['img']) }}" alt="{{$available_locale['name']}}">
                                 <span className='text-gray-900'>{{$available_locale['name']}}</span>
                             </div>
                         @endif

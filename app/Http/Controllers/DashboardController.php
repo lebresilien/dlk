@@ -62,12 +62,24 @@ class DashboardController extends Controller
     }
 
     public function project($slug) {
+        return view('projects.show');
+    }
 
+    public function details($slug) {
         $project = Project::where('slug', $slug)->first();
 
-        return view('projects.show', [
+        return [
             'data' => $project,
-            'projects' => Project::latest()->take(3)->get()
-        ]);
+            'projects' => Project::latest()->take(3)->get()->map(function($item) {
+                return [
+                    'id' => $item->id,
+                    'slug' => $item->slug,
+                    'title' => $item->title,
+                    'description' => $item->description,
+                    'img' => env('APP_DEBUG') ? 'http://127.0.0.1:8000/storage/'.$item->img :  env('APP_URL').'/storage/'.$item->img,
+                    'category' => $item->service
+                ];
+            })
+        ];
     }
 }

@@ -119,15 +119,15 @@ return [
 'available_locales' => [
     [
         'name' => 'fr',
-        'img' => 'img/fr.png'
+        'img' => '/img/fr.png'
     ],
     [
         'name' => 'es',
-        'img' => 'img/es.png'
+        'img' => '/img/es.png'
     ],
     [
         'name' => 'en',
-        'img' => 'img/en.jpg'
+        'img' => '/img/en.jpg'
     ]
   ],
 
