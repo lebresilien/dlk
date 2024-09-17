@@ -7,7 +7,7 @@
 
         <div class="container flex flex-col space-x-3 items-center justify-center my-16 lg:space-x-3 lg:my-24 lg:flex-row">
 
-            <div class="flex flex-col space-y-4 lg:w-2/3 lg:space-y-10" id="details">
+            <div class="flex flex-col lg:w-2/3 " id="details">
 
             </div>
 
@@ -49,6 +49,41 @@
                 const data = JSON.parse(res);
                 const projects = data.projects;
                 //console.log(data.projects);
+
+                // Create the container element details
+                const container_1 = document.createElement('div');
+                container_1.classList.add('relative');
+
+                // Create img cover
+                const img_1 = document.createElement('img');
+                img_1.classList.add('grayscale', 'transition', 'ease-in', 'hover:-translate-y-2', 'hover:scale-25', 'duration-500')
+                img_1.src = data.data.img;
+                img_1.alt = data.data.title;
+                container_1.appendChild(img_1);
+
+                // Create the paragraph element
+                const paragraph_1 = document.createElement('p');
+                paragraph_1.classList.add('text-gray-700', 'text-base', 'font-normal', 'my-10');
+                paragraph_1.textContent = data.data.description;
+                container_1.appendChild(paragraph_1);
+
+                // Create the div images
+                const pictures = document.createElement('d');
+                pictures.classList.add('flex', 'flex-row', 'flex-wrap', 'my-10', 'space-x-7');
+                pictures.id = 'pictures';
+
+                const attachments = data.data.attachments;
+                for(let i = 0; i < attachments.length; i++) {
+                    const photo = document.createElement('img');
+                    photo.classList.add('w-24', 'h-24');
+                    photo.src = attachments[i];
+                    photo.alt = 'alt';
+                    pictures.appendChild(photo);
+                }
+
+                container_1.appendChild(pictures);
+
+                document.querySelector('#details').appendChild(container_1);
 
                 for(let i = 0; i < projects.length; i++) {
 
