@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFieldsToProjects extends Migration
+class CreateCarousselsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddFieldsToProjects extends Migration
      */
     public function up()
     {
-        Schema::table('projects', function (Blueprint $table) {
-            //$table->string('slug')->unique();
-            //$table->longText('attachments');
+        Schema::create('caroussels', function (Blueprint $table) {
+            $table->id();
+            $table->string('img');
+            $table->longText('description');
+            $table->timestamps();
         });
     }
 
@@ -26,9 +28,6 @@ class AddFieldsToProjects extends Migration
      */
     public function down()
     {
-        Schema::table('projects', function (Blueprint $table) {
-            $table->dropColumn('slug');
-            $table->dropColumn('attachments');
-        });
+        Schema::dropIfExists('caroussels');
     }
 }
